@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currencies: {},
       baseCurrency: "EUR",
       targetCurrency: "EUR",
-      baseAmount: 0,
-      targetAmount: 0
+      baseAmount: 0
     },
     computed: {
       baseRate: function () {
@@ -16,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       targetRate: function () {
         return this.getRate(this.targetCurrency);
+      },
+      // baseAmount: function () {
+      //   return this.convertFromEuros(this.convertToEuros(this.targetAmount, this.targetRate), this.baseRate) ? this.convertFromEuros(this.convertToEuros(this.targetAmount, this.targetRate), this.baseRate) : 0;
+      // },
+      targetAmount: function () {
+        return this.convertFromEuros(this.convertToEuros(this.baseAmount, this.baseRate), this.targetRate);
       },
     },
     mounted() {
@@ -32,23 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       },
       getRate: function (currency) {
-        return this.currencies[currency] ? this.currencies[currency] : 0;
+        return this.currencies[currency];
       },
-      convertFromEuros: function (amount) {
-        return amount * this.targetRate;
+      convertFromEuros: function (amount, rate) {
+        return amount * rate;
       },
-      convertToEuros: function (amount) {
-        return amount / this.baseRate;
-      },
-      setBaseAmount: function () {
-        this.baseAmount = this.convertToEuros(this.convertFromEuros(this.targetAmount));
-      },
-      setTargetAmount: function () {
-        this.targetAmount = this.convertFromEuros(this.convertToEuros(this.baseAmount));
+      convertToEuros: function (amount, rate) {
+        return amount / rate;
       },
     },
     filters: {
-      formatMoney: function (amount) {
+      moneyFormat: function (amount) {
         return amount.toFixed(2);
       },
     }

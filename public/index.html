@@ -9,21 +9,25 @@
   <body>
     <div id="app">
       <div id="base">
-        <label for="base_select">Select currency:</label>
-        <select id="base_select" v-model="baseCurrency">
-          <option disabled value="">Select currency</option>
-          <option v-for="(rate, currency) in currencies" :value="currency">{{currency}}</option>
-        </select>
-        <input type="number" v-model.number="baseAmount" step="0.01" v-on:input="setTargetAmount">
+        <div>
+          <label for="base_select">Select currency:</label>
+          <select id="base_select" v-model="baseCurrency">
+            <option disabled value="">Select currency</option>
+            <option v-for="(rate, currency) in currencies" :value="currency">{{currency}}</option>
+          </select>
+        </div>
+        <input type="number" v-model.number="baseAmount" step="0.01">
       </div>
       <div id="target">
-        <label for="target_select">Select currency:</label>
-        <select id="target_select" v-model="targetCurrency">
-          <option disabled value="">Select currency</option>
-          <option v-for="(rate, currency) in currencies" :value="currency">{{currency}}</option>
-        </select>
-        <span>{{ targetAmount | formatMoney }}</span>
-        <input type="number" v-model.number="targetAmount" step="0.01" v-on:input="setBaseAmount">
+        <div>
+          <label for="target_select">Select currency:</label>
+          <select id="target_select" v-model="targetCurrency">
+            <option disabled value="">Select currency</option>
+            <option v-for="(rate, currency) in currencies" :value="currency">{{currency}}</option>
+          </select>
+        </div>
+        <span>{{ targetAmount | moneyFormat }}</span>
+        <!-- <input type="number" v-model.number="targetAmount" step="0.01"> -->
       </div>
     </div>
   </body>

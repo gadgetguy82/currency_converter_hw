@@ -7,6 +7,15 @@ div {
   padding: 5px;
 }
 
+span {
+  margin : 5px;
+  padding: 5px;
+}
+
+input {
+  margin : 5px;
+}
+
 ul {
   list-style: none;
   margin: 0;

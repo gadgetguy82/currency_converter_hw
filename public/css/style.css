@@ -2,6 +2,10 @@ body {
   background-color: #04246F;
 }
 
+h1 {
+
+}
+
 div {
   margin : 5px;
   padding: 5px;
@@ -10,10 +14,12 @@ div {
 span {
   margin : 5px;
   padding: 5px;
+  float: right;
 }
 
 input {
   margin : 5px;
+  float: right;
 }
 
 ul {
@@ -29,9 +35,11 @@ ul {
 }
 
 #base {
-
+  border: 1px solid #000000;
+  border-radius: 10px;
 }
 
 #target {
-
+  border: 1px solid #000000;
+  border-radius: 10px;
 }
